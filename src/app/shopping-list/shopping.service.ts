@@ -11,13 +11,7 @@ export class ShoppingService implements OnInit{
     }
 
     ngOnInit(){
-        this.recipeService.addToShopping.subscribe(
-            (ingrediants:Ingrediant[])=>{
-                console.log("catched");
-                this.ingrediants.push(...ingrediants);
-                this.ingrediantProvider.emit(this.ingrediants.slice());
-            }
-        )
+        
     }
 
     addToShopping(ingrediants:Ingrediant[]){
