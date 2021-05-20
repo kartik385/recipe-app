@@ -1,0 +1,28 @@
+<div *ngIf="recipe.name !== ''; else non" class="mx-4">
+  <div class="row">
+    <div class="col-xs-12">
+      <img [src]="recipe.image" width="600px" height="400px" />
+
+      <button
+        type="button"
+        class="btn btn-primary my-1"
+        (click)="onClick(recipe)"
+      >
+        Add Ingrediants to shopping list
+      </button>
+
+      <p>Name: {{ recipe.name }}</p>
+      <p>Discription: {{ recipe.disc }}</p>
+      <p>Ingrediants:</p>
+      <div class="row" *ngFor="let ingrediant of recipe.ingrediants">
+        <div class="col-md-6">
+          {{ ingrediant.name }}
+        </div>
+        <div class="col-md-6">({{ ingrediant.amount }})</div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #non>
+  <p>select any recipe</p>
+</ng-template>

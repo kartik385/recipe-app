@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'recipe-app';
+  typeHeader:string="recipe";
+  onHeaderClick(event:string){
+      this.typeHeader=event;
+  }
+  loadCondition():boolean{
+    return this.typeHeader==="recipe"?true:false;
+  }
+  
 }

@@ -1,0 +1,28 @@
+<div class="row my-3">
+  <div class="col-xs-12">
+    <form>
+      <div class="row">
+        <div class="form-group col-sm-5">
+          <label for="Name">Name</label>
+          <input type="text" id="name" class="form-control" #ingName />
+        </div>
+        <div class="form-group col-sm-2">
+          <label for="amount">Amount</label>
+          <input type="text" id="amount" class="form-control" #ingAmount />
+        </div>
+      </div>
+      <div class="row my-2">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            (click)="onAdd(ingName, ingAmount); $event.preventDefault()"
+          >
+            Add
+          </button>
+          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-primary">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
