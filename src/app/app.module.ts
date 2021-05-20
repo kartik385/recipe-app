@@ -12,7 +12,16 @@ import { ListEditComponent } from './shopping-list/list-edit/list-edit.component
 import { RecipeItemComponent } from './recipes/recipes-list/recipe-item/recipe-item.component';
 import { ShoppingService } from './shopping-list/shopping.service';
 import { RecipeService } from './recipes/recipe.service';
+import { RouterModule, Routes } from '@angular/router';
 
+const appRoutes:Routes=[
+  {path:'recipe',component:RecipesComponent,children:[
+    {path:':id',component:RecipesDetailComponent}
+  ]},
+  {path:'shopping',component:ShoppingListComponent},
+  {path:'',component:RecipesComponent},
+  
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +37,8 @@ import { RecipeService } from './recipes/recipe.service';
   ],
   imports: [
   
-  BrowserModule
+  BrowserModule,
+  RouterModule.forRoot(appRoutes)
   ],
   providers: [ShoppingService,RecipeService],
   bootstrap: [AppComponent]

@@ -14,8 +14,7 @@ export class ShoppingService implements OnInit{
         
     }
 
-    addToShopping(ingrediants:Ingrediant[]){
-        this.ingrediants.push(...ingrediants);
+    repeatRemover(ingrediants:Ingrediant[]){
         let cleanArray:Ingrediant[]=[];
         let nonRepeat:any={};
         this.ingrediants.forEach((ingrediant:Ingrediant)=>{
@@ -26,6 +25,11 @@ export class ShoppingService implements OnInit{
         }
         )
         this.ingrediants=cleanArray;
+    }
+
+    addToShopping(ingrediants:Ingrediant[]){
+        this.ingrediants.push(...ingrediants);
+        this.repeatRemover(this.ingrediants);
         this.ingrediantProvider.emit(
             this.ingrediants
         );
@@ -35,6 +39,7 @@ export class ShoppingService implements OnInit{
     }
     addIngrediant(ingrediant:Ingrediant){
         this.ingrediants.push(ingrediant);
+        this.repeatRemover(this.ingrediants);
         this.ingrediantProvider.emit(
             this.ingrediants.slice()
         );

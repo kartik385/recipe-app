@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Ingrediant } from './../../shared/ingrediant.model';
 import { ShoppingService } from './../shopping.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-edit',
@@ -9,13 +10,17 @@ import { ShoppingService } from './../shopping.service';
 })
 export class ListEditComponent implements OnInit {
   
-  constructor(private shoppingService:ShoppingService) { }
+  constructor(private shoppingService:ShoppingService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
   onAdd(name:HTMLInputElement,amount:HTMLInputElement){
-      this.shoppingService.addIngrediant(new Ingrediant(name.value,parseInt(amount.value)));
+      (name.value && amount.value)?this.shoppingService.addIngrediant(new Ingrediant(name.value,parseInt(amount.value))):null;
+  }
+
+  navRecipe(){
+    this.router.navigate(['recipe']);
   }
 
 }
